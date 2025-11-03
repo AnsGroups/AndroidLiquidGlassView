@@ -53,7 +53,7 @@ English | [简体中文](https://github.com/QmDeve/AndroidLiquidGlassView/blob/m
 **Add the following to the module's `build.gradle`:**
 ```gradle
 dependencies {
-   implementation 'io.github.qmdeve:AndroidLiquidGlassView:0.0.1-alpha05'
+   implementation 'io.github.qmdeve:AndroidLiquidGlassView:1.0.0-alpha06'
 }
 ```
 
