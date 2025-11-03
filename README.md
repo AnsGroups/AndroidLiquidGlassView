@@ -1,20 +1,22 @@
 <div align="center">
 
 ## AndroidLiquidGlassView
-**Android Liquid Glass View Library, Real Refraction and Dispersion Effects**
+**Android imitation of iOS 26 liquid glass effect, AndroidLiquidGlassView library has real refraction and dispersion effect**
 
 <br>
 <br>
 
   <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="Apache"/>
-  <img src="https://img.shields.io/badge/Java-8-orange" alt="Java 8"/>
   <img src="https://img.shields.io/badge/Android-13.0%2B-brightgreen.svg" alt="Android 5"/>
   <img src="https://img.shields.io/badge/targetSdk-36-green" alt="targetSdk"/>
-  <img src="https://img.shields.io/badge/🚀-Feature-purple" alt="Feature"/>
-  <img src="https://img.shields.io/maven-central/v/io.github.qmdeve/AndroidLiquidGlassView" alt="Jitpack"/>
+  <img src="https://img.shields.io/maven-central/v/io.github.qmdeve/AndroidLiquidGlassView" alt="maven"/>
   <img src="https://img.shields.io/github/stars/QmDeve/AndroidLiquidGlassView" alt="Stars"/>
 
 <br>
+<br>
+
+English | [简体中文](https://github.com/QmDeve/AndroidLiquidGlassView/blob/master/README_zh.md)
+
 <br>
 
 [Telegram Group](https://t.me/QmDeves)
@@ -25,7 +27,7 @@
 
 ## Characteristic
  - **Realistic `liquid glass` effect - Physically-based `refraction` and `dispersion` effects**
- - **Highly customizable - supports adjustment of rounded corners, refraction parameters, tone, etc.**
+ - **Height can be customized - support the adjustment of rounded corner radius, refraction height, refraction offset, dispersion parameters, blur radius, tone, etc**
 
 ---
 
@@ -45,9 +47,8 @@
 
 ---
 
-
-
 ## Quick integration
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.qmdeve/AndroidLiquidGlassView)](https://central.sonatype.com/artifact/io.github.qmdeve/AndroidLiquidGlassView)
 ### Add Dependencies：
 **Add the following to the module's `build.gradle`:**
 ```gradle
