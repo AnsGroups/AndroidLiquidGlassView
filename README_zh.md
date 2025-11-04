@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="Apache"/>
   <img src="https://img.shields.io/badge/Android-13.0%2B-brightgreen.svg" alt="Android 5"/>
   <img src="https://img.shields.io/badge/targetSdk-36-green" alt="targetSdk"/>
-  <img src="https://img.shields.io/maven-central/v/io.github.qmdeve/AndroidLiquidGlassView" alt="maven"/>
+  <img src="https://img.shields.io/maven-central/v/com.qmdeve/AndroidLiquidGlassView" alt="maven"/>
   <img src="https://img.shields.io/github/stars/QmDeve/AndroidLiquidGlassView" alt="Stars"/>
 
 <br>
@@ -53,7 +53,7 @@
 **将以下依赖项添加到模块的`build.gradle`中:**
 ```gradle
 dependencies {
-   implementation 'io.github.qmdeve:AndroidLiquidGlassView:1.0.0-alpha06'
+   implementation 'com.qmdeve:AndroidLiquidGlassView:1.0.0-alpha07'
 }
 ```
 
