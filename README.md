@@ -143,6 +143,9 @@ liquidGlassView.bind(content);
 
 [![Star History Chart](https://api.star-history.com/svg?repos=QmDeve/AndroidLiquidGlassView&type=date&legend=bottom-right)](https://www.star-history.com/#QmDeve/AndroidLiquidGlassView&type=date&legend=bottom-right)
 
+## Contributors
+[![QmDeve](https://images.weserv.nl/?url=https://github.com/QmDeve.png?size=30&mask=circle)](https://github.com/QmDeve)
+
 ---
 
 ### My other open-source library
