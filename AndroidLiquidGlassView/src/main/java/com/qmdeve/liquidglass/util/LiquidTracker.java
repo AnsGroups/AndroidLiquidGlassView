@@ -7,9 +7,10 @@ import android.view.VelocityTracker;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.dynamicanimation.animation.DynamicAnimation;
-import androidx.dynamicanimation.animation.SpringAnimation;
-import androidx.dynamicanimation.animation.SpringForce;
+
+import com.qmdeve.liquidglass.dynamicanimation.DynamicAnimation;
+import com.qmdeve.liquidglass.dynamicanimation.SpringAnimation;
+import com.qmdeve.liquidglass.dynamicanimation.SpringForce;
 
 public class LiquidTracker {
     private VelocityTracker velocityTracker;
@@ -18,13 +19,13 @@ public class LiquidTracker {
 
     public LiquidTracker(View view) {
         SpringForce springX = new SpringForce();
-        springX.setStiffness(SpringForce.STIFFNESS_LOW);
+        springX.setStiffness(250f);
         springX.setDampingRatio(SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY);
         springAnimX = new SpringAnimation(view, DynamicAnimation.SCALE_X);
         springAnimX.setSpring(springX);
 
         SpringForce springY = new SpringForce();
-        springY.setStiffness(SpringForce.STIFFNESS_LOW);
+        springY.setStiffness(250f);
         springY.setDampingRatio(SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY);
         springAnimY = new SpringAnimation(view, DynamicAnimation.SCALE_Y);
         springAnimY.setSpring(springY);
@@ -44,7 +45,6 @@ public class LiquidTracker {
                 float[] scaleXY = getLiquidScale();
                 animateToFinalPosition(scaleXY[0], scaleXY[1]);
 
-                //if ACTION_UP did not happen yet (holding) and no more ACTION_MOVE then ease it back to 1.0f anyways
                 liquidHandler.removeCallbacksAndMessages(null);
                 liquidHandler.postDelayed(() -> {
                     animateToFinalPosition(1f, 1f);
@@ -79,10 +79,15 @@ public class LiquidTracker {
         if (velocityTracker == null)
             return new float[] { 1f, 1f };
 
-        float velocity = getVelocity();
-        float scaleX = Math.clamp(1f + velocity * 0.1f, 0.8f, 1.337f);
-        float scaleY = Math.clamp(1f - velocity * 0.1f, 0.8f, 1.337f);
-        return new float[] { scaleX, scaleY };
+        velocityTracker.computeCurrentVelocity(1);
+        float velocityX = velocityTracker.getXVelocity();
+        float velocityY = velocityTracker.getYVelocity();
+        float velocity = (float)Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+
+        return new float[] {
+                Math.clamp(1f + velocity * 0.5f, 0.6f, 1.4f),
+                Math.clamp(1f - velocity * 0.5f, 0.6f, 1.4f)
+        };
     }
 
     private void ensureAddMovement(MotionEvent e) {

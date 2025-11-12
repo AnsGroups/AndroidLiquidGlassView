@@ -4,14 +4,14 @@ plugins {
 
 android {
     namespace 'com.qmdeve.liquidglass.demo'
-    compileSdkVersion 36
+    compileSdk { version = release(36) }
 
     defaultConfig {
         applicationId "com.qmdeve.liquidglass.demo"
-        minSdkVersion 24
-        targetSdkVersion 36
+        minSdk { version = release(24) }
+        targetSdk { version = release(36) }
         versionCode 1
-        versionName "1.0.0-alpha09"
+        versionName "1.0.0-alpha10"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,4 +33,5 @@ dependencies {
     implementation project(':AndroidLiquidGlassView')
     implementation libs.appcompat
     implementation libs.material
+    implementation libs.qmblurview
 }

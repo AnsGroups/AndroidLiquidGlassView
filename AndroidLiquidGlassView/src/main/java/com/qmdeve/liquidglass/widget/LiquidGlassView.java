@@ -39,7 +39,8 @@ public class LiquidGlassView extends FrameLayout {
     private ViewGroup customSource;
     private final Context context;
     private float cornerRadius = Utils.dp2px(getResources(), 40), refractionHeight = Utils.dp2px(getResources(), 20), refractionOffset = -Utils.dp2px(getResources(), 70), tintAlpha = 0.0f, tintColorRed = 1.0f, tintColorGreen = 1.0f, tintColorBlue = 1.0f, blurRadius = 0.01f, dispersion = 0.5f, downX, downY, startTx, startTy;
-    private boolean draggable = true;
+    private boolean draggableEnabled = false;
+    private boolean elasticEnabled = false;
     private Config config;
     private LiquidTracker liquidTracker;
 
@@ -241,13 +242,35 @@ public class LiquidGlassView extends FrameLayout {
     }
 
     /**
+     * @Deprecated Please use the {@link #setDraggableEnabled}
+     */
+    @Deprecated(since = "v1.0.0-alpha10", forRemoval = true)
+    public void setDraggable(boolean enable) {
+        this.draggableEnabled = enable;
+        if (!enable) {
+            liquidTracker.recycle();
+        }
+    }
+
+    /**
      * Set whether the View is draggable or not
      *
-     * @param enable boolean
+     * @param enabled boolean
      */
-    public void setDraggable(boolean enable) {
-        this.draggable = enable;
-        if (!enable) {
+    public void setDraggableEnabled(boolean enabled) {
+        this.draggableEnabled = enabled;
+        if (!enabled) {
+            liquidTracker.recycle();
+        }
+    }
+
+    /**
+     * Set whether elastic effect is needed or not
+     * @param enabled boolean
+     */
+    public void setElasticEnabled(boolean enabled) {
+        this.elasticEnabled = enabled;
+        if (!enabled) {
             liquidTracker.recycle();
         }
     }
@@ -361,8 +384,9 @@ public class LiquidGlassView extends FrameLayout {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(android.view.MotionEvent e) {
-        if (!draggable) return super.onTouchEvent(e);
-        liquidTracker.applyMovement(e);
+        if (!draggableEnabled) return super.onTouchEvent(e);
+        if (elasticEnabled) liquidTracker.applyMovement(e);
+
         switch (e.getActionMasked()) {
             case android.view.MotionEvent.ACTION_DOWN:
                 downX = e.getRawX();
