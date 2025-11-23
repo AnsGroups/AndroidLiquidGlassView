@@ -15,20 +15,31 @@ import com.qmdeve.liquidglass.dynamicanimation.SpringForce;
 public class LiquidTracker {
     private VelocityTracker velocityTracker;
     private final SpringAnimation springAnimX, springAnimY;
+    private final SpringAnimation springAnimRotX, springAnimRotY;
     private final Handler liquidHandler;
 
     public LiquidTracker(View view) {
         SpringForce springX = new SpringForce();
-        springX.setStiffness(250f);
-        springX.setDampingRatio(SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY);
+        springX.setStiffness(300f);
+        springX.setDampingRatio(SpringForce.DAMPING_RATIO_LOW_BOUNCY);
         springAnimX = new SpringAnimation(view, DynamicAnimation.SCALE_X);
         springAnimX.setSpring(springX);
 
         SpringForce springY = new SpringForce();
-        springY.setStiffness(250f);
-        springY.setDampingRatio(SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY);
+        springY.setStiffness(300f);
+        springY.setDampingRatio(SpringForce.DAMPING_RATIO_LOW_BOUNCY);
         springAnimY = new SpringAnimation(view, DynamicAnimation.SCALE_Y);
         springAnimY.setSpring(springY);
+
+        SpringForce springRot = new SpringForce();
+        springRot.setStiffness(300f);
+        springRot.setDampingRatio(SpringForce.DAMPING_RATIO_NO_BOUNCY);
+        
+        springAnimRotX = new SpringAnimation(view, DynamicAnimation.ROTATION_X);
+        springAnimRotX.setSpring(springRot);
+        
+        springAnimRotY = new SpringAnimation(view, DynamicAnimation.ROTATION_Y);
+        springAnimRotY.setSpring(springRot);
 
         liquidHandler = new Handler(Looper.getMainLooper());
     }
@@ -95,6 +106,15 @@ public class LiquidTracker {
             velocityTracker = VelocityTracker.obtain();
         }
         velocityTracker.addMovement(e);
+    }
+
+    public void animateScale(float scale) {
+        animateToFinalPosition(scale, scale);
+    }
+
+    public void animateTilt(float rotX, float rotY) {
+        springAnimRotX.animateToFinalPosition(rotX);
+        springAnimRotY.animateToFinalPosition(rotY);
     }
 
     private void animateToFinalPosition(float x, float y) {
