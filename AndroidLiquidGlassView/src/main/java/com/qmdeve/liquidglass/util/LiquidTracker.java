@@ -20,20 +20,20 @@ public class LiquidTracker {
 
     public LiquidTracker(View view) {
         SpringForce springX = new SpringForce();
-        springX.setStiffness(300f);
-        springX.setDampingRatio(SpringForce.DAMPING_RATIO_LOW_BOUNCY);
+        springX.setStiffness(180f);
+        springX.setDampingRatio(0.35f);
         springAnimX = new SpringAnimation(view, DynamicAnimation.SCALE_X);
         springAnimX.setSpring(springX);
 
         SpringForce springY = new SpringForce();
-        springY.setStiffness(300f);
-        springY.setDampingRatio(SpringForce.DAMPING_RATIO_LOW_BOUNCY);
+        springY.setStiffness(180f);
+        springY.setDampingRatio(0.35f);
         springAnimY = new SpringAnimation(view, DynamicAnimation.SCALE_Y);
         springAnimY.setSpring(springY);
 
         SpringForce springRot = new SpringForce();
-        springRot.setStiffness(300f);
-        springRot.setDampingRatio(SpringForce.DAMPING_RATIO_NO_BOUNCY);
+        springRot.setStiffness(180f);
+        springRot.setDampingRatio(0.5f);
         
         springAnimRotX = new SpringAnimation(view, DynamicAnimation.ROTATION_X);
         springAnimRotX.setSpring(springRot);
