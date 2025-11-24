@@ -33,6 +33,7 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.qmdeve.liquidglass.LiquidGlass;
@@ -88,7 +89,7 @@ public class LiquidGlassView extends FrameLayout {
     }
 
     @Override
-    protected void dispatchDraw(Canvas canvas) {
+    protected void dispatchDraw(@NonNull Canvas canvas) {
         super.dispatchDraw(canvas);
         if (touchEffectEnabled && isTouching) {
             Path path = new Path();
@@ -122,25 +123,6 @@ public class LiquidGlassView extends FrameLayout {
     }
 
     /**
-     * @Deprecated Please use the {@link #setCornerRadius} method
-     */
-    @Deprecated(since = "v0.0.1-alpha02", forRemoval = true)
-    public void setCornerRadiusDp(float dp) {
-        setCornerRadius(Utils.dp2px(getResources(), Math.max(0, dp)));
-        updateConfig();
-    }
-
-    /**
-     * @Deprecated Please use the {@link #setCornerRadius} method
-     */
-    @Deprecated(since = "v0.0.1-alpha02", forRemoval = true)
-    public void setCornerRadiusPx(float px) {
-        float maxPx = getHeight() > 0 ? getHeight() / 2f : Utils.dp2px(getResources(), 99);
-        this.cornerRadius = Math.max(0, Math.min(px, maxPx));
-        updateConfig();
-    }
-
-    /**
      * Set the corner radius px
      *
      * @param px float
@@ -148,26 +130,6 @@ public class LiquidGlassView extends FrameLayout {
     public void setCornerRadius(float px) {
         float maxPx = getHeight() > 0 ? getHeight() / 2f : Utils.dp2px(getResources(), 99);
         this.cornerRadius = Math.max(0, Math.min(px, maxPx));
-        updateConfig();
-    }
-
-    /**
-     * @Deprecated Please use the {@link #setRefractionHeight} method
-     */
-    @Deprecated(since = "v0.0.1-alpha02", forRemoval = true)
-    public void setRefractionHeightDp(float dp) {
-        setRefractionHeight(Utils.dp2px(getResources(), dp));
-        updateConfig();
-    }
-
-    /**
-     * @Deprecated Please use the {@link #setRefractionHeight} method
-     */
-    @Deprecated(since = "v0.0.1-alpha02", forRemoval = true)
-    public void setRefractionHeightPx(float px) {
-        float minPx = Utils.dp2px(getResources(), 12);
-        float maxPx = Utils.dp2px(getResources(), 50);
-        this.refractionHeight = Math.max(minPx, Math.min(maxPx, px));
         updateConfig();
     }
 
@@ -180,28 +142,6 @@ public class LiquidGlassView extends FrameLayout {
         float minPx = Utils.dp2px(getResources(), 12);
         float maxPx = Utils.dp2px(getResources(), 50);
         this.refractionHeight = Math.max(minPx, Math.min(maxPx, px));
-        updateConfig();
-    }
-
-
-    /**
-     * @Deprecated {@link #setRefractionOffset}
-     */
-    @Deprecated(since = "v0.0.1-alpha02", forRemoval = true)
-    public void setRefractionOffsetDp(float dp) {
-        setRefractionOffset(Utils.dp2px(getResources(), dp));
-        updateConfig();
-    }
-
-    /**
-     * @Deprecated Please use the {@link #setRefractionOffset}
-     */
-    @Deprecated(since = "v0.0.1-alpha02", forRemoval = true)
-    public void setRefractionOffsetPx(float px) {
-        float minPx = Utils.dp2px(getResources(), 20);
-        float maxPx = Utils.dp2px(getResources(), 120);
-        px = Math.max(minPx, Math.min(maxPx, px));
-        this.refractionOffset = -px;
         updateConfig();
     }
 
@@ -277,17 +217,6 @@ public class LiquidGlassView extends FrameLayout {
     public void setBlurRadius(float radius) {
         this.blurRadius = Math.max(0.01f, Math.min(50, radius));
         updateConfig();
-    }
-
-    /**
-     * @Deprecated Please use the {@link #setDraggableEnabled}
-     */
-    @Deprecated(since = "v1.0.0-alpha10", forRemoval = true)
-    public void setDraggable(boolean enable) {
-        this.draggableEnabled = enable;
-        if (!enable) {
-            liquidTracker.recycle();
-        }
     }
 
     /**
