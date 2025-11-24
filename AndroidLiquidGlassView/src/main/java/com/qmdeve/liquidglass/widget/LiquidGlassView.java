@@ -30,8 +30,8 @@ import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -41,7 +41,7 @@ import com.qmdeve.liquidglass.Config;
 import com.qmdeve.liquidglass.util.LiquidTracker;
 import com.qmdeve.liquidglass.util.Utils;
 
-public class LiquidGlassView extends FrameLayout {
+public class LiquidGlassView extends ViewGroup {
 
     private LiquidGlass glass;
     private ViewGroup customSource;
@@ -52,7 +52,7 @@ public class LiquidGlassView extends FrameLayout {
     private boolean touchEffectEnabled = false;
     private Config config;
     private LiquidTracker liquidTracker;
-    
+
     // Glow effect variables
     private Paint glowPaint;
     private float glowX, glowY;
@@ -83,7 +83,7 @@ public class LiquidGlassView extends FrameLayout {
         setClipToPadding(false);
         setClipChildren(false);
         liquidTracker = new LiquidTracker(this);
-        
+
         glowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         glowPaint.setStyle(Paint.Style.FILL);
     }
@@ -95,18 +95,43 @@ public class LiquidGlassView extends FrameLayout {
             Path path = new Path();
             RectF rect = new RectF(0, 0, getWidth(), getHeight());
             path.addRoundRect(rect, cornerRadius, cornerRadius, Path.Direction.CW);
-            
+
             canvas.save();
             canvas.clipPath(path);
-            
+
             float radius = Math.max(getWidth(), getHeight()) * 0.8f;
             int[] colors = {Color.argb(60, 255, 255, 255), Color.TRANSPARENT};
             float[] stops = {0f, 1f};
             RadialGradient gradient = new RadialGradient(glowX, glowY, radius, colors, stops, Shader.TileMode.CLAMP);
             glowPaint.setShader(gradient);
             canvas.drawRect(rect, glowPaint);
-            
+
             canvas.restore();
+        }
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        // Layout all child views
+        for (int i = 0; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            if (child.getVisibility() != GONE) {
+                // Layout children to fill the entire view
+                child.layout(0, 0, getWidth(), getHeight());
+            }
+        }
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        // Measure all child views
+        for (int i = 0; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            if (child.getVisibility() != GONE) {
+                measureChild(child, widthMeasureSpec, heightMeasureSpec);
+            }
         }
     }
 
@@ -336,8 +361,8 @@ public class LiquidGlassView extends FrameLayout {
         glass = new LiquidGlass(getContext(), config);
 
         LayoutParams lp = new LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
+                LayoutParams.MATCH_PARENT,
+                LayoutParams.MATCH_PARENT
         );
         addView(glass, lp);
 
@@ -350,8 +375,7 @@ public class LiquidGlassView extends FrameLayout {
 
     private void removeGlass() {
         if (glass != null) {
-            ViewGroup p = (ViewGroup) glass.getParent();
-            if (p != null) p.removeView(glass);
+            removeView(glass);
             glass = null;
         }
     }
@@ -367,7 +391,7 @@ public class LiquidGlassView extends FrameLayout {
                 if (touchEffectEnabled) {
                     isTouching = true;
                     liquidTracker.animateScale(1.02f);
-                    
+
                     glowX = e.getX();
                     glowY = e.getY();
                     invalidate();
@@ -387,7 +411,7 @@ public class LiquidGlassView extends FrameLayout {
                     glowY = e.getY();
                     invalidate();
                 }
-                
+
                 if (draggableEnabled) {
                     float dx = e.getRawX() - downX;
                     float dy = e.getRawY() - downY;
@@ -425,7 +449,7 @@ public class LiquidGlassView extends FrameLayout {
                 if (draggableEnabled) return true;
                 break;
         }
-        
+
         boolean superResult = super.onTouchEvent(e);
         return touchEffectEnabled || superResult;
     }
