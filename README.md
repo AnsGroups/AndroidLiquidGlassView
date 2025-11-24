@@ -79,11 +79,6 @@ dependencies {
 ## Star History
 [![Star History](https://starchart.qmdeve.com/QmDeve/AndroidLiquidGlassView.svg?variant=adaptive)](https://starchart.qmdeve.com/QmDeve/AndroidLiquidGlassView)
 
-## Contributors
-<a href="https://github.com/QmDeve/AndroidLiquidGlassView/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=QmDeve/AndroidLiquidGlassView"  alt="Contributors"/>
-</a>
-
 ## My open source project
  - **[QmBlurView](https://github.com/QmDeve/QmBlurView)**
  - **[QmReflection](https://github.com/QmDeve/QmReflection)**
