@@ -9,21 +9,18 @@
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black?logo=github)](https://GitHub.com/QmDeve/AndroidLiquidGlassView/)
 [![GitLab](https://img.shields.io/badge/GitLab-Repository-orange?logo=gitlab)](https://gitlab.com/QmDeve/AndroidLiquidGlassView)
-[![Gitee](https://img.shields.io/badge/Gitee-Repository-red?logo=gitee)](https://gitee.com/QmDeve/AndroidLiquidGlassView)
-[![GitCode](https://img.shields.io/badge/GitCode-Repository-blue?logo=gitcode)](https://gitcode.com/QmDeve/AndroidLiquidGlassView)
 
 [![Telegram](https://img.shields.io/badge/Telegram%20Group-QmDeves-blue.svg?logo=telegram)](https://t.me/QmDeves)
 [![QQ Group](https://img.shields.io/badge/QQ%20Group-1046829337-blue.svg?logo=qq)](https://qm.qq.com/q/OEVn8ZslMq)
 
   <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="Apache"/>
   <img src="https://img.shields.io/badge/Android-13.0%2B-brightgreen.svg" alt="Android 5"/>
-  <img src="https://img.shields.io/badge/targetSdk-36-green" alt="targetSdk"/>
   <img src="https://img.shields.io/maven-central/v/com.qmdeve/AndroidLiquidGlassView" alt="maven"/>
 
 <br>
 <br>
 
-English | [简体中文](https://github.com/QmDeve/AndroidLiquidGlassView/blob/master/README_zh.md)
+English | [简体中文](./README_zh.md)
 
 </div>
 
@@ -35,8 +32,6 @@ English | [简体中文](https://github.com/QmDeve/AndroidLiquidGlassView/blob/m
 > - **Main Repository**：[GitHub](https://github.com/QmDeve/AndroidLiquidGlassView)
 > - **Other Repository**：
 >   - [GitLab](https://gitlab.com/QmDeve/AndroidLiquidGlassView)
->   - [Gitee](https://gitee.com/QmDeve/AndroidLiquidGlassView)
->   - [GitCode](https://gitcode.com/QmDeve/AndroidLiquidGlassView)
 
 ---
 
@@ -44,29 +39,31 @@ English | [简体中文](https://github.com/QmDeve/AndroidLiquidGlassView/blob/m
 - **Realistic `liquid glass` effect - Physically-based `refraction` and `dispersion` effects**
 - **Height can be customized - support the adjustment of rounded corner radius, refraction height, refraction offset, dispersion parameters, blur radius, tone, etc**
 - **Based on physical and realistic elastic effects**
----
 
 ## Requirements
 - **Android API 33 + (Android 13), to get the full glass effect**
-
----
 
 ## Screenshot
 
 <img src="./img/image.png" alt="Stars"/>
 
----
-
 ## Demo experience
-[Download Demo](https://github.com/QmDeve/AndroidLiquidGlassView/blob/master/app/release/app-release.apk)
+**[Download Demo](./app/release/app-release.apk)**
 
----
+# Start using
+### Quick integration
+
+<img src="https://img.shields.io/maven-central/v/com.qmdeve/AndroidLiquidGlassView?label=Maven%20Central%20Latest%20Version" alt="maven"/>
+
+**Add dependencies in the `dependencies{}` block of `build.gradle`**
+```gradle
+dependencies {
+   implementation 'com.qmdeve:AndroidLiquidGlassView:<Version>'
+}
+```
 
 ## Quick use
-
-**Usage: [Docs](https://glass.docs.qmdeve.com/)**
-
----
+**Usage: [https://glass.docs.qmdeve.com/](https://glass.docs.qmdeve.com/)**
 
 ## Effect explaination
 **On `Android 13` and later devices, the library renders the full `Liquid Glass` effect, including:**
@@ -77,24 +74,32 @@ English | [简体中文](https://github.com/QmDeve/AndroidLiquidGlassView/blob/m
 
 **On devices below Android 13, the view will maintain a transparent background and will not render any effects**
 
-## Notes for using library
-**1.`Sampling source`：** Ensure that the bound sampling source view contains valid content
-
-**2.`Compatibility`：** Full features are only supported on `Android 13+`
-
----
-
 ## Star History
 [![Star History](https://starchart.qmdeve.com/QmDeve/AndroidLiquidGlassView.svg?variant=adaptive)](https://starchart.qmdeve.com/QmDeve/AndroidLiquidGlassView)
 
 ## Contributors
-
 <a href="https://github.com/QmDeve/AndroidLiquidGlassView/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=QmDeve/AndroidLiquidGlassView"  alt="Contributors"/>
 </a>
 
----
+## My open source project
+ - **[QmBlurView](https://github.com/QmDeve/QmBlurView)**
+ - **[QmReflection](https://github.com/QmDeve/QmReflection)**
+ - **[Qm Authenticator for Android](https://github.com/Rouneant/Qm-Authenticator-for-Android)**
 
-### My other open-source library
-- **[QmBlurView](https://github.com/QmDeve/QmBlurView)**
-- **[QmReflection](https://github.com/QmDeve/QmReflection)**
+## License
+```
+Copyright 2025 QmDeve
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```

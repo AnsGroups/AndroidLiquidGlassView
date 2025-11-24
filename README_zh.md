@@ -17,7 +17,6 @@
 
   <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="Apache"/>
   <img src="https://img.shields.io/badge/Android-13.0%2B-brightgreen.svg" alt="Android 5"/>
-  <img src="https://img.shields.io/badge/targetSdk-36-green" alt="targetSdk"/>
   <img src="https://img.shields.io/maven-central/v/com.qmdeve/AndroidLiquidGlassView" alt="maven"/>
   
 <br>
@@ -44,28 +43,31 @@
 - **`液态玻璃`效果 - 真实的折射与色散效果**
 - **高度可定制 - 支持调整圆角半径、折射高度、折射偏移、色散参数、模糊半径、色调等**
 - **基于物理且真实的弹性效果**
----
 
 ## 要求
 - **Android API 33 +（Android 13），以获得完整的玻璃效果**
 
----
-
-## 截图
+## 预览
 
 <img src="./img/image.png" alt="Stars"/>
-
----
 
 ## Demo 演示
 [下载 Demo](https://github.com/QmDeve/AndroidLiquidGlassView/blob/master/app/release/app-release.apk)
 
----
+# 开始使用
+### 快速集成
+
+<img src="https://img.shields.io/maven-central/v/com.qmdeve/AndroidLiquidGlassView?label=Maven%20Central%20Latest%20Version" alt="maven"/>
+
+**在 `build.gradle` 文件的 `dependencies{}` 块中添加依赖项**
+```gradle
+dependencies {
+   implementation 'com.qmdeve:AndroidLiquidGlassView:<Version>'
+}
+```
 
 ## 如何使用
-**请查看文档：[Docs](https://glass.docs.qmdeve.com/zh/)**
-
----
+**请查看文档：[https://glass.docs.qmdeve.com/](https://glass.docs.qmdeve.com/zh/)**
 
 ## 效果说明
 **在`Android 13`及更高版本的设备上，将渲染完整的`液化玻璃`效果，包括：**
@@ -76,13 +78,6 @@
 
 **在`Android 13`以下的设备上，View将保持透明的背景，不会呈现任何效果**
 
-## 注意事项
-**1.`采样源`：** 确保绑定采样源视图包含有效内容
-
-**2.`兼容性`：** 仅在`Android 13+`上渲染完整效果
-
----
-
 ## Star History
 [![Star History](https://starchart.qmdeve.com/QmDeve/AndroidLiquidGlassView.svg?variant=adaptive)](https://starchart.qmdeve.com/QmDeve/AndroidLiquidGlassView)
 
@@ -92,16 +87,32 @@
   <img src="https://contrib.rocks/image?repo=QmDeve/AndroidLiquidGlassView"  alt="Contributors"/>
 </a>
 
----
+## 我的开源项目
+ - **[QmBlurView](https://github.com/QmDeve/QmBlurView)**
+ - **[QmReflection](https://github.com/QmDeve/QmReflection)**
+ - **[Qm Authenticator for Android](https://github.com/Rouneant/Qm-Authenticator-for-Android)**
 
-### 我的其他开源库
-- **[QmBlurView](https://github.com/QmDeve/QmBlurView)**
-- **[QmReflection](https://github.com/QmDeve/QmReflection)**
-
----
-
-### 赞助我们
+## 赞助我们
 
 **如果您觉得我们的项目对您有帮助，欢迎通过以下方式赞助支持：**
 
 ![赞助二维码](https://youke1.picui.cn/s1/2025/11/04/6909d2ae165f0.png)
+
+---
+
+## License
+```
+Copyright 2025 QmDeve
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
